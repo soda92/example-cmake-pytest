@@ -15,11 +15,9 @@ jobs:
 
       - name: "🔨 Build"
         run: |
-          cmake -B build -G "Ninja"
+          cmake -B build
           cmake --build build
 
       - name: "🔍 Test"
         run: |
-          cmake -B build -G "Ninja"
-          cmake --build build
           ctest --test-dir build -C Debug -V --output-on-failure
