@@ -13,6 +13,10 @@ jobs:
           fetch-depth: 0
           submodules: true
 
+      - name: "✨ Install dependencies"
+        run: |
+          pip install pytest
+
       - name: "🔨 Build"
         run: |
           cmake -B build
