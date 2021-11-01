@@ -1,0 +1,26 @@
+name: CI - Windows
+on: [pull_request, push]
+
+
+jobs:
+  build:
+    name: 🚧Build
+    runs-on: windows-latest
+
+  steps:
+    - name: '🧰 Checkout'
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        submodules: true
+
+    - name: '🔨 Build'
+      run: |
+        cmake -B build -G "Ninja"
+        cmake --build build
+
+    - name: '🔍 Test'
+      run: |
+        cmake -B build -G "Ninja"
+        cmake --build build
+        ctest --test-dir build -C Debug -V --output-on-failure
